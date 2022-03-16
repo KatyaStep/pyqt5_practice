@@ -24,7 +24,7 @@ class Window(QWidget):
 
     def update_task_list(self, date):
         self.tasksListWidget.clear()
-        db = sqlite3.connect('data.db')
+        db = sqlite3.connect('data/data.db')
         cursor = db.cursor()
 
         query = "SELECT task, completed FROM tasks WHERE Date = ?"
@@ -41,7 +41,7 @@ class Window(QWidget):
             self.tasksListWidget.addItem(item)
 
     def save_changes(self):
-        db = sqlite3.connect("data.db")
+        db = sqlite3.connect("data/data.db")
         cursor = db.cursor()
         date = self.calendarWidget.selectedDate().toPyDate()
 
@@ -62,7 +62,7 @@ class Window(QWidget):
         messageBox.exec()
 
     def add_new_item(self):
-        db = sqlite3.connect("data.db")
+        db = sqlite3.connect("data/data.db")
         cursor = db.cursor()
 
         new_task = str(self.taskLineEdit.text())
